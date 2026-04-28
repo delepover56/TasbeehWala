@@ -17,109 +17,80 @@ if (menuToggle && navigation) {
   });
 }
 
-const getVisibleCount = (carousel) => {
-  const mobile = Number(carousel.dataset.visibleMobile || 1);
-  const tablet = Number(carousel.dataset.visibleTablet || mobile);
-  const desktop = Number(carousel.dataset.visibleDesktop || tablet);
+const ensureLoopableSlides = (carousel) => {
+  const wrapper = carousel.querySelector('.swiper-wrapper');
 
-  if (window.innerWidth <= 640) {
-    return mobile;
-  }
-
-  if (window.innerWidth <= 1080) {
-    return tablet;
-  }
-
-  return desktop;
-};
-
-const setupInfiniteCarousel = (name) => {
-  const carousel = document.querySelector(`[data-carousel="${name}"]`);
-
-  if (!carousel) {
+  if (!wrapper) {
     return;
   }
 
-  const track = carousel.querySelector('.carousel-track');
-  const prevButton = document.querySelector(`[data-carousel-prev="${name}"]`);
-  const nextButton = document.querySelector(`[data-carousel-next="${name}"]`);
-  let currentIndex = 0;
-  let cloneCount = 0;
-  let originalCount = 0;
-  let slideStep = 0;
+  Array.from(wrapper.children)
+    .filter((slide) => slide.hasAttribute('data-swiper-extra-clone'))
+    .forEach((slide) => slide.remove());
 
-  const getOriginalSlides = () => Array.from(track.children).filter((slide) => !slide.hasAttribute('data-clone'));
+  const slides = Array.from(wrapper.children);
+  const desktopCount = Number(carousel.dataset.visibleDesktop || 3);
+  const minimumSlides = Math.max(desktopCount * 2, 6);
 
-  const cloneSlide = (slide) => {
-    const clone = slide.cloneNode(true);
-    clone.setAttribute('data-clone', 'true');
-    return clone;
-  };
+  if (slides.length >= minimumSlides) {
+    return;
+  }
 
-  const updateTransform = (animate = true) => {
-    track.style.transition = animate ? 'transform 0.35s ease' : 'none';
-    track.style.transform = `translateX(-${currentIndex * slideStep}px)`;
-  };
+  let index = 0;
 
-  const rebuild = () => {
-    Array.from(track.querySelectorAll('[data-clone]')).forEach((clone) => clone.remove());
-
-    const originals = getOriginalSlides();
-
-    if (!originals.length) {
-      return;
-    }
-
-    const visibleCount = Math.min(getVisibleCount(carousel), originals.length);
-    cloneCount = visibleCount;
-    originalCount = originals.length;
-
-    const leading = originals.slice(-cloneCount).map(cloneSlide);
-    const trailing = originals.slice(0, cloneCount).map(cloneSlide);
-
-    leading.forEach((slide) => track.insertBefore(slide, track.firstChild));
-    trailing.forEach((slide) => track.appendChild(slide));
-
-    const firstSlide = track.children[0];
-    const gap = parseFloat(getComputedStyle(track).gap || '0');
-    slideStep = firstSlide.getBoundingClientRect().width + gap;
-    currentIndex = cloneCount;
-    updateTransform(false);
-  };
-
-  const move = (direction) => {
-    currentIndex += direction;
-    updateTransform(true);
-  };
-
-  track.addEventListener('transitionend', () => {
-    if (currentIndex >= originalCount + cloneCount) {
-      currentIndex -= originalCount;
-      updateTransform(false);
-    }
-
-    if (currentIndex < cloneCount) {
-      currentIndex += originalCount;
-      updateTransform(false);
-    }
-  });
-
-  prevButton?.addEventListener('click', () => move(-1));
-  nextButton?.addEventListener('click', () => move(1));
-
-  let resizeTimer = null;
-
-  window.addEventListener('resize', () => {
-    window.clearTimeout(resizeTimer);
-    resizeTimer = window.setTimeout(rebuild, 120);
-  });
-
-  rebuild();
+  while (wrapper.children.length < minimumSlides) {
+    const clone = slides[index % slides.length].cloneNode(true);
+    clone.setAttribute('data-swiper-extra-clone', 'true');
+    wrapper.appendChild(clone);
+    index += 1;
+  }
 };
 
-setupInfiniteCarousel('arrivals');
-setupInfiniteCarousel('bestsellers');
-setupInfiniteCarousel('collections');
+const initCarousel = (name) => {
+  const carousel = document.querySelector(`[data-carousel="${name}"]`);
+
+  if (!carousel || typeof Swiper === 'undefined') {
+    return;
+  }
+
+  ensureLoopableSlides(carousel);
+
+  const mobile = Number(carousel.dataset.visibleMobile || 1);
+  const tablet = Number(carousel.dataset.visibleTablet || 2);
+  const desktop = Number(carousel.dataset.visibleDesktop || 3);
+
+  new Swiper(carousel, {
+    loop: true,
+    speed: 700,
+    spaceBetween: 18,
+    grabCursor: true,
+    allowTouchMove: true,
+    watchOverflow: true,
+    slidesPerView: mobile,
+    loopAdditionalSlides: desktop + 3,
+    autoplay: {
+      delay: 2600,
+      disableOnInteraction: false,
+      pauseOnMouseEnter: true,
+    },
+    navigation: {
+      prevEl: `[data-carousel-prev="${name}"]`,
+      nextEl: `[data-carousel-next="${name}"]`,
+    },
+    breakpoints: {
+      641: {
+        slidesPerView: tablet,
+      },
+      1081: {
+        slidesPerView: desktop,
+      },
+    },
+  });
+};
+
+initCarousel('arrivals');
+initCarousel('bestsellers');
+initCarousel('collections');
 
 const accordion = document.querySelector('[data-accordion]');
 
