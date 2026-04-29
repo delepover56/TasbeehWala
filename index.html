@@ -22,7 +22,7 @@
 <body>
   <header class="site-header" id="top">
     <div class="container header-inner">
-      <a class="brand" href="#top" aria-label="TasbeehWala home">
+      <a class="brand" href="index.html" aria-label="TasbeehWala home">
         <img src="Assets/Images/Logo.png" alt="TasbeehWala logo">
       </a>
 
@@ -33,11 +33,42 @@
       </button>
 
       <nav class="primary-nav" id="primary-navigation" aria-label="Primary">
-        <a href="#new-arrivals">New Arrivals</a>
-        <a href="#how-it-works">How It Works</a>
-        <a href="#bestsellers">Best Sellers</a>
-        <a href="#collections">Collections</a>
-        <a href="#journal">Journal</a>
+        <ul class="primary-nav-list">
+          <li class="nav-item"><a class="nav-link is-current" href="index.html">Home</a></li>
+          <li class="nav-item">
+            <a class="nav-link" href="smart-zikr-rings.html">Smart Zikr Rings</a>
+            <ul class="nav-submenu" aria-label="Smart Zikr Rings">
+              <li><a href="zikr-rings.html">Zikr Rings</a></li>
+            </ul>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="digital-tasbihs.html">Digital Tasbihs</a>
+            <ul class="nav-submenu" aria-label="Digital Tasbihs">
+              <li><a href="digital-tasbeeh.html">Digital Tasbeeh</a></li>
+            </ul>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="beeds-tasbihs.html">Beeds Tasbihs</a>
+            <ul class="nav-submenu" aria-label="Beeds Tasbihs">
+              <li><a href="stone-tasbihs.html">Stone Tasbihs</a></li>
+              <li><a href="koka-wood-tasbihs.html">Koka Wood Tasbihs</a></li>
+            </ul>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="islamic-accessories.html">Islamic Accessories</a>
+            <ul class="nav-submenu" aria-label="Islamic Accessories">
+              <li><a href="hajj-umrah-collect.html">Hajj &amp; Umrah Collect</a></li>
+              <li><a href="ahram.html">Ahram</a></li>
+            </ul>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="prayer-mats.html">Prayer Mats</a>
+            <ul class="nav-submenu" aria-label="Prayer Mats">
+              <li><a href="foam.html">Foam</a></li>
+              <li><a href="velvet.html">Velvet</a></li>
+            </ul>
+          </li>
+        </ul>
       </nav>
 
       <div class="header-actions" aria-label="Quick actions">
@@ -48,7 +79,7 @@
           <img src="Assets/Icons/Profile.svg" alt="">
         </button>
         <button class="icon-button icon-cart" type="button" aria-label="Cart">
-          <img src="Assets/Icons/Cart.svg" alt="">
+          <img src="Assets/Icons/shopping-cart.svg" alt="">
           <span>2</span>
         </button>
       </div>
@@ -67,9 +98,9 @@
             </h1>
             <p>Purpose-built tasbeehs, prayer essentials, and smart rings designed to keep daily remembrance close,
               quiet, and steady.</p>
-            <a class="pill-button dark icon-right" href="#new-arrivals">
+            <a class="pill-button dark icon-right" href="smart-zikr-rings.html">
               Discover Our Product
-              <img src="Assets/Icons/Arrow_Right.svg" alt="">
+              <img src="Assets/Icons/arrow-right-up.svg" alt="">
             </a>
           </div>
 
@@ -80,14 +111,18 @@
                 <strong>Fancy Tasbeehs</strong>
                 Prayer-ready detail
               </span>
-              <span class="tag-plus">+</span>
+              <span class="tag-cart">
+                <img src="Assets/Icons/cart_white.svg" alt="">
+              </span>
             </button>
             <button class="product-tag tag-bottom" type="button">
               <span class="tag-copy">
                 <strong>Al Rayyan Velvet</strong>
                 Soft prayer comfort
               </span>
-              <span class="tag-plus">+</span>
+              <span class="tag-cart">
+                <img src="Assets/Icons/cart_white.svg" alt="">
+              </span>
             </button>
           </div>
         </div>
@@ -174,7 +209,7 @@
         </div>
 
         <div class="section-cta">
-          <a class="pill-button dark small icon-right uppercase" href="#collections">
+          <a class="pill-button dark small icon-right uppercase" href="smart-zikr-rings.html">
             View All Products
             <img src="Assets/Icons/Basket.svg" alt="">
           </a>
@@ -330,9 +365,9 @@
                   <div>
                     <h3>Fancy Tasbeehs</h3>
                   </div>
-                  <button class="mini-action arrow-action" type="button" aria-label="Open fancy tasbeehs collection">
+                  <a class="mini-action arrow-action" href="beeds-tasbihs.html" aria-label="Open fancy tasbeehs collection">
                     <img src="Assets/Icons/Arrow_Right.svg" alt="">
-                  </button>
+                  </a>
                 </div>
               </article>
 
@@ -344,10 +379,10 @@
                   <div>
                     <h3>Koka Wood Tasbeehs</h3>
                   </div>
-                  <button class="mini-action arrow-action" type="button"
+                  <a class="mini-action arrow-action" href="koka-wood-tasbihs.html"
                     aria-label="Open koka wood tasbeehs collection">
                     <img src="Assets/Icons/Arrow_Right.svg" alt="">
-                  </button>
+                  </a>
                 </div>
               </article>
 
@@ -359,9 +394,9 @@
                   <div>
                     <h3>Stones Tasbeehs</h3>
                   </div>
-                  <button class="mini-action arrow-action" type="button" aria-label="Open stones tasbeehs collection">
+                  <a class="mini-action arrow-action" href="stone-tasbihs.html" aria-label="Open stones tasbeehs collection">
                     <img src="Assets/Icons/Arrow_Right.svg" alt="">
-                  </button>
+                  </a>
                 </div>
               </article>
 
@@ -373,9 +408,9 @@
                   <div>
                     <h3>Digital Tasbeehs</h3>
                   </div>
-                  <button class="mini-action arrow-action" type="button" aria-label="Open digital tasbeehs collection">
+                  <a class="mini-action arrow-action" href="digital-tasbihs.html" aria-label="Open digital tasbeehs collection">
                     <img src="Assets/Icons/Arrow_Right.svg" alt="">
-                  </button>
+                  </a>
                 </div>
               </article>
             </div>
@@ -409,7 +444,7 @@
                 <li><img src="Assets/Icons/Bluetooth_Icon.svg" alt=""> Bluetooth App Connection For Progress Tracking
                 </li>
               </ul>
-              <a class="pill-button dark small icon-right uppercase" href="#bestsellers">
+              <a class="pill-button dark small icon-right uppercase" href="smart-zikr-rings.html">
                 Shop Smart Rings
                 <img src="Assets/Icons/Basket.svg" alt="">
               </a>
@@ -527,35 +562,35 @@
           </button>
         </form>
         <div class="social-links">
-          <a href="#top" aria-label="Instagram"><img src="Assets/Icons/Instagram_Icon.svg" alt=""></a>
-          <a href="#top" aria-label="Facebook"><img src="Assets/Icons/Facebook_Icon.svg" alt=""></a>
-          <a href="#top" aria-label="LinkedIn"><img src="Assets/Icons/LinkedIn_Icon.svg" alt=""></a>
-          <a href="#top" aria-label="YouTube"><img src="Assets/Icons/YouTube_Icon.svg" alt=""></a>
+          <a href="index.html" aria-label="Instagram"><img src="Assets/Icons/Instagram_Icon.svg" alt=""></a>
+          <a href="index.html" aria-label="Facebook"><img src="Assets/Icons/Facebook_Icon.svg" alt=""></a>
+          <a href="index.html" aria-label="LinkedIn"><img src="Assets/Icons/LinkedIn_Icon.svg" alt=""></a>
+          <a href="index.html" aria-label="YouTube"><img src="Assets/Icons/YouTube_Icon.svg" alt=""></a>
         </div>
       </div>
 
       <div class="footer-block footer-links">
         <ul>
-          <li><a href="#top">Home</a></li>
-          <li><a href="#new-arrivals">What's New</a></li>
-          <li><a href="#how-it-works">Smart Rings</a></li>
-          <li><a href="#collections">Tasbeehs</a></li>
-          <li><a href="#collections">Prayer Mats</a></li>
-          <li><a href="#collections">Digital Tasbeehs</a></li>
-          <li><a href="#collections">Stones Tasbeehs</a></li>
-          <li><a href="#collections">Koka Wood Tasbeehs</a></li>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="smart-zikr-rings.html">Smart Zikr Rings</a></li>
+          <li><a href="digital-tasbihs.html">Digital Tasbihs</a></li>
+          <li><a href="beeds-tasbihs.html">Beeds Tasbihs</a></li>
+          <li><a href="islamic-accessories.html">Islamic Accessories</a></li>
+          <li><a href="prayer-mats.html">Prayer Mats</a></li>
+          <li><a href="stone-tasbihs.html">Stone Tasbihs</a></li>
+          <li><a href="koka-wood-tasbihs.html">Koka Wood Tasbihs</a></li>
         </ul>
       </div>
 
       <div class="footer-block footer-links">
         <h3>Categories</h3>
         <ul>
-          <li><a href="#collections">Fancy Tasbeehs</a></li>
-          <li><a href="#collections">Koka Wood Tasbeehs</a></li>
-          <li><a href="#collections">Stones Tasbeehs</a></li>
-          <li><a href="#collections">Digital Tasbeehs</a></li>
-          <li><a href="#collections">Zikr Rings</a></li>
-          <li><a href="#collections">Jaenamaz | Premium Prayer Mats</a></li>
+          <li><a href="zikr-rings.html">Zikr Rings</a></li>
+          <li><a href="digital-tasbeeh.html">Digital Tasbeeh</a></li>
+          <li><a href="stone-tasbihs.html">Stone Tasbihs</a></li>
+          <li><a href="koka-wood-tasbihs.html">Koka Wood Tasbihs</a></li>
+          <li><a href="hajj-umrah-collect.html">Hajj &amp; Umrah Collect</a></li>
+          <li><a href="velvet.html">Velvet Prayer Mats</a></li>
         </ul>
       </div>
     </div>
@@ -563,10 +598,10 @@
     <div class="container footer-bottom">
       <p>&copy; 2026, Tasbeeh Wala</p>
       <div>
-        <a href="#top">Refund Policy</a>
-        <a href="#top">Return Policy</a>
-        <a href="#top">Privacy Policy</a>
-        <a href="#top">Terms Of Service</a>
+        <a href="index.html">Refund Policy</a>
+        <a href="index.html">Return Policy</a>
+        <a href="index.html">Privacy Policy</a>
+        <a href="index.html">Terms Of Service</a>
       </div>
     </div>
   </footer>
